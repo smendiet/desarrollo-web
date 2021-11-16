@@ -16,6 +16,8 @@
     "jest": "^27.3.1"
   },
   "jest": {
+    "collectCoverage": true,
+    "coverageReporters": ["html"],
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     }

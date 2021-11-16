@@ -26,3 +26,14 @@ npm run test
 ## Jest & Babel
 
 npm install --save-dev babel-jest
+
+## Coverage
+
+npm run test -- --coverage
+
+### Añadir al package.json para ejecución automatica
+
+dentro de la propiedad de jest:
+
+"collectCoverage": true,
+"coverageReporters": ["html"],

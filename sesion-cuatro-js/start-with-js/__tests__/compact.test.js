@@ -8,5 +8,7 @@ describe('Compact function', () => {
     expect(compact(input)).toEqual(output);
   });
 
-  // puede tener mas test
+  test('Array cannot be empty', () => {
+    expect(() => compact([])).toThrow();
+  });
 });
