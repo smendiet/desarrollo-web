@@ -11,7 +11,14 @@ function getAPOD() {
       console.log(data);
     });
 
-    console.log(data);
+    // la respuesta completa ha sido recibida. Imprime el resultado
+    resp.on('end', () => {
+      let body = JSON.parse(data);
+
+      console.log('Título:', body.title);
+      console.log('\n Explicación', body.explanation);
+      console.log('\n URL:', body.url);
+    })
   });
 }
 
