@@ -1,17 +1,9 @@
 // node  = process.argv[0];
 // ArchivoName = process.argv[1];
 
-const tipoOperacion = '';
-const num1 = -1;
-const num2 = -1;
-
-if (process.argv.length == 5) {
-  tipoOperacion = process.argv[2];
-  num1 = Number(process.argv[3]);
-  num2 = Number(process.argv[4]);
-} else {
-  tipoOperacion = await 
-}
+const tipoOperacion = process.argv[2];
+const num1 = Number(process.argv[3]);
+const num2 = Number(process.argv[4]);
 
 // Calculadora tipoOperacion === Suma Resta Multiplica Divide
 switch (tipoOperacion) {
