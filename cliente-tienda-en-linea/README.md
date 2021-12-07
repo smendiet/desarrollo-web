@@ -32,3 +32,9 @@ npx create-react-app <nombre-del-proyecto>
 https://reactjs.org/
 https://reactjs.org/docs/getting-started.html
 
+## Instalación de React Router
+
+npm install --save react-router-dom
+
+
+# TODO: Reto completar login y register
