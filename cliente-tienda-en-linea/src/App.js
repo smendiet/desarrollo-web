@@ -12,10 +12,16 @@ import ProductsPage from './pages/ProductsPage';
 
 function App() {
   return (
-    <div >
-      {/* jsx */}
-      <h1>hola mundo desde react</h1>
-    </div>
+    <Router>
+      <BaseLayout>
+        <Routes>
+          <Route exact path="/" component={LoginPage} />
+          <Route exact path="/signup" component={SignUpPage} />
+          <Route exact path="/products" component={ProductsPage} />
+          <Route component={NotFoundPage} />
+        </Routes>  
+      </BaseLayout>
+    </Router>
   );
 }
 
