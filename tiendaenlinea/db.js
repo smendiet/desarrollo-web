@@ -3,6 +3,8 @@ const { Sequelize } = require('sequelize');
 // Importing models
 const Product = require('./models/Product');
 const Review = require('./models/Review');
+const Order = require('./models/Order');
+const User = require('./models/User');
 
 // Database connection
 const sequelize = new Sequelize('ecommerce-api', 'root', 'root', {
@@ -12,7 +14,12 @@ const sequelize = new Sequelize('ecommerce-api', 'root', 'root', {
 });
 
 // Getting models
-const models = [Product, Review];
+const models = [
+  Product,
+  Review,
+  Order,
+  User
+];
 
 // Registering models into Sequelize
 for (let model of models) {
@@ -20,9 +27,12 @@ for (let model of models) {
 }
 
 // Configuring relations
-const { products, reviews } = sequelize.models;
-// Relation one-to-one in reviews table
+const { products, reviews, users, orders } = sequelize.models;
+// Relation one-to-one in reviews and orders table
 reviews.belongsTo(products);
+
+orders.belongsTo(products);
+orders.belongsTo(users);
 
 // example:
 //products.belongsTo(users);
