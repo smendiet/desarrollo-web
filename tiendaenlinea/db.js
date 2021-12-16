@@ -7,7 +7,7 @@ const Order = require('./models/Order');
 const User = require('./models/User');
 
 // Database connection
-const sequelize = new Sequelize('ecommerce-api', 'root', 'root', {
+const sequelize = new Sequelize('ecommerce-api', 'root', '12345', {
   host: 'localhost',
   dialect: 'mariadb',
   logging: false,

@@ -15,10 +15,10 @@ function App() {
     <Router>
       <BaseLayout>
         <Routes>
-          <Route exact path="/" component={LoginPage} />
-          <Route exact path="/signup" component={SignUpPage} />
-          <Route exact path="/products" component={ProductsPage} />
-          <Route component={NotFoundPage} />
+          <Route exact path="/" element={<LoginPage />} />
+          <Route exact path="/signup" element={<SignUpPage />} />
+          <Route exact path="/products" element={<ProductsPage />} />
+          <Route element={<NotFoundPage />} />
         </Routes>  
       </BaseLayout>
     </Router>

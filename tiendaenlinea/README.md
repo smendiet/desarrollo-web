@@ -47,3 +47,18 @@ link: https://github.com/kelektiv/node.bcrypt.js
 jsonwebtoken es una paquete que contiene una implimentación del estandar ![JSON Web Token (JWT)](https://datatracker.ietf.org/doc/html/rfc7519), este permite la creación de token de acceso.
 
 link: https://github.com/auth0/node-jsonwebtoken
+
+
+### Instalación
+
+npm i -D sequelize-cli
+
+Crear las migraciones que son las encargadas de crear y actualizar las tablas.
+
+./node_modules/.bin/sequelize migration:create --name CreateTableProducts
+o
+npx sequelize  migration:create --name CreateTableProducts
+
+despues de generadas las migraciones se debe ejecutar.
+
+

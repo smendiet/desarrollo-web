@@ -7,13 +7,14 @@
 const express = require('express');
 const router = express.Router();
 const sequelize = require('../db.js');
+const permission = require('../middlewares/permission');
 
-router.get('/', async (req, res) => {
+router.get('/', permission('admin', 'client'), async (req, res) => {
   const reviews = await sequelize.models.reviews.findAndCountAll();
   return res.status(200).json({ data: reviews });
 });
 
-router.post('/', async (req, res) => {
+router.post('/', permission('admin', 'client'), async (req, res) => {
   const { body } = req;
   const review = await sequelize.models.reviews.create({
     heading: body.heading,
@@ -23,7 +24,8 @@ router.post('/', async (req, res) => {
   await review.save();
   res.status(201).json({ data: review });
 });
-router.put('/:id', async (req, res) => {
+
+router.put('/:id', permission('admin', 'client'), async (req, res) => {
   const { body, params: { id }} = req;
   const review = await sequelize.models.reviews.findByPk(id);
 
@@ -38,7 +40,7 @@ router.put('/:id', async (req, res) => {
   return res.json({ data: updatedReview });
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', permission('admin'), async (req, res) => {
   const { params: { id } } = req;
   const review = await sequelize.models.reviews.findByPk(id);
 

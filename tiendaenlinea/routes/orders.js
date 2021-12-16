@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const sequelize = require('../db');
+const permission = require('../middlewares/permission');
 
 // Get all orders
 /*
@@ -8,7 +9,7 @@ const sequelize = require('../db');
 Lista las ordenes que se encuentran en la tabla 
 
 */
-router.get('/', async (req, res) => {
+router.get('/', permission('admin'), async (req, res) => {
   const orders = await sequelize.models.orders.findAndCountAll();
   return res.status(200).json({ data: orders });
 });
@@ -17,7 +18,7 @@ router.get('/', async (req, res) => {
 /*
 Crea la orden a partir de los valores que llegan en el body
 */
-router.post('/', async (req, res) => {
+router.post('/', permission('admin', 'client'), async (req, res) => {
   const { body } = req;
   const order = await sequelize.models.orders.create({
     userId: body.userId,
@@ -33,7 +34,7 @@ router.post('/', async (req, res) => {
 /*
 Actualiza la orden a partir de los valores que llegan en el body
 */
-router.put('/:id', async (req, res) => {
+router.put('/:id', permission('admin', 'client'), async (req, res) => {
   const { body, params = { id }} = req;
   const order = await sequelize.models.orders.findByPk(id);
 
@@ -54,7 +55,7 @@ router.put('/:id', async (req, res) => {
 /*
 Borra la orden a partir de primary key que llega en el body
 */
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', permission('admin'), async (req, res) => {
   const { params: { id } } = req;
   const order = await sequelize.models.orders.findByPk(id);
 
